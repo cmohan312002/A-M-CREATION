@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A M CREATION | Premium Bulk Garment Manufacturing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #fafafa;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 8rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button {
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #6366f1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .cta-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #1a1a1a;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            font-weight: 300;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .product-card h3 {
+            font-size: 1.6rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .product-card p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        .features-section {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid;
+            border-image: linear-gradient(135deg, #6366f1, #ec4899) 1;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        .clients-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .client-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .client-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .client-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .client-card h3 {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .process-section {
+            background: white;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .process-card h3 {
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .process-card p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 6rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23grid2)" /></svg>');
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .contact-section p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #9ca3af;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 4rem 1.5rem;
+            }
+
+            .products-grid,
+            .features-grid,
+            .process-grid,
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">A M CREATION</div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#features">Why Us</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Crafting Excellence in Every Stitch</h1>
+            <p>Premium bulk garment manufacturing with precision, quality, and style. From design to delivery, we bring your vision to life.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button cta-primary">Start Your Order</a>
+                <a href="#products" class="cta-button cta-secondary">Explore Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="container">
+        <div class="section-header">
+            <span class="section-label">Our Products</span>
+            <h2 class="section-title">What We Create</h2>
+            <p class="section-subtitle">Custom garments manufactured to perfection for every need</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="product-icon">👕</span>
+                <h3>Premium Shirts</h3>
+                <p>Custom-crafted shirts in any style, fabric, and specification. Perfect for corporate uniforms, events, or fashion retail with impeccable finishing.</p>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">👗</span>
+                <h3>Designer Skirts</h3>
+                <p>Elegant skirts manufactured with precision for schools, businesses, or fashion collections. Your design, our expertise, flawless execution.</p>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">🩳</span>
+                <h3>Quality Shorts</h3>
+                <p>Comfortable, durable shorts in diverse styles and materials. Ideal for sports teams, casual wear, or promotional merchandise.</p>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">✨</span>
+                <h3>Custom Apparel</h3>
+                <p>Complete garment solutions including pants, jackets, uniforms, and specialized clothing. If you can design it, we can create it.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Promise</span>
+                <h2 class="section-title">Why Choose A M CREATION</h2>
+                <p class="section-subtitle">Excellence in every aspect of garment manufacturing</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Complete Customization</h3>
+                    <p>Every detail tailored to your vision - design, fabric, colors, sizes, and finishes. Your specifications become our blueprint for perfection.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📦</span>
+                    <h3>Bulk Excellence</h3>
+                    <p>Scale without compromise. From hundreds to thousands of units, maintaining unwavering quality and consistency across every single piece.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💎</span>
+                    <h3>Premium Quality</h3>
+                    <p>Multi-stage quality control ensuring every garment meets the highest standards. We don't just manufacture, we craft masterpieces.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Reliable Delivery</h3>
+                    <p>Precision timing meets professional logistics. Your orders arrive exactly when promised, anywhere you need them.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Global Reach</h3>
+                    <p>Serving clients across all locations with seamless shipping. Local expertise with international standards.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🤝</span>
+                    <h3>Partner Approach</h3>
+                    <p>Dedicated support from concept to completion. We're not just manufacturers, we're your garment production partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="clients-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Who We Serve</span>
+                <h2 class="section-title">Trusted by Diverse Industries</h2>
+                <p class="section-subtitle">From individuals to institutions, we deliver excellence</p>
+            </div>
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-icon">🏢</div>
+                    <h3>Businesses</h3>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🏪</div>
+                    <h3>Retailers</h3>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🏫</div>
+                    <h3>Institutions</h3>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">👤</div>
+                    <h3>Individuals</h3>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">⚽</div>
+                    <h3>Sports Teams</h3>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🎓</div>
+                    <h3>Educational</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How It Works</span>
+                <h2 class="section-title">Your Journey to Perfect Garments</h2>
+                <p class="section-subtitle">Four simple steps to exceptional results</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">1</div>
+                    <h3>Share Your Vision</h3>
+                    <p>Tell us your requirements - design, fabric preferences, sizes, quantities, and timeline. Every detail matters.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">2</div>
+                    <h3>Receive Proposal</h3>
+                    <p>Get a comprehensive quote with pricing, timeline, and production details. Clear, transparent, professional.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">3</div>
+                    <h3>Expert Production</h3>
+                    <p>Our skilled team manufactures your garments with rigorous quality control at every stage of production.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">4</div>
+                    <h3>Timely Delivery</h3>
+                    <p>Receive your premium bulk order exactly on schedule, delivered to your specified location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <h2>Let's Create Together</h2>
+            <p>Ready to bring your garment vision to life? Get in touch for a free consultation and quote.</p>
+            <div class="cta-buttons">
+                <a href="mailto:info@amcreation.com" class="cta-button cta-primary">Email Us Now</a>
+                <a href="tel:+1234567890" class="cta-button cta-secondary">Call Today</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 <span class="footer-brand">A M CREATION</span> | Crafting Quality, Delivering Excellence | Premium Garment Manufacturing Worldwide</p>
+    </footer>
+</body>
+</html>
